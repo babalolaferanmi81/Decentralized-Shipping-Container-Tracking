@@ -9,3 +9,11 @@ U
 %contracts/container-registration.clar,8/4/84449c02d7a5d49a029a6b0f2276a524d4743c3a
 T
 $tests/container-registration.test.ts,2/9/298ad3630ed537cc00eb9f546ee3899a4452a6f3
+P
+ contracts/customs-clearance.clar,5/2/52080b1101dd99a526fa3ec4cb90e9406f239ad7
+O
+tests/customs-clearance.test.ts,e/b/eb7d2221f1489f7a153372a12e879cae1f0ab0ea
+P
+ contracts/location-tracking.clar,b/3/b348d263afb608116e3c865876c0d3bc11f9732e
+O
+tests/location-tracking.test.ts,d/d/ddc797c62ccbc25cccdde504fa073c39413c9acd

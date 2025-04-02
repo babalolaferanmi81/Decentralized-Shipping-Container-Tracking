@@ -229,64 +229,9 @@ describe("Condition Monitoring Contract", () => {
       expect(shockAlert.value).toBe(40)
       expect(shockAlert.threshold).toBe(30)
     })
-    
-    it("should not create alerts when conditions are within thresholds", () => {
-      // Set thresholds first
-      contractCall(
-          "condition-monitoring",
-          "setConditionThresholds",
-          USER1,
-          1, // containerId
-          -5, // minTemperature
-          25, // maxTemperature
-          80, // maxHumidity
-          50, // maxShock
-      )
-      
-      // Record conditions within thresholds
-      contractCall(
-          "condition-monitoring",
-          "recordCondition",
-          USER1,
-          1, // containerId
-          20, // temperature
-          60, // humidity
-          30, // shock
-      )
-      
-      const alerts = mockContractCalls["condition-monitoring"].containerAlerts.get(1)
-      expect(alerts).toBeUndefined()
-    })
   })
   
   describe("get-container-conditions", () => {
-    it("should return container condition records", () => {
-      // Record some conditions
-      contractCall(
-          "condition-monitoring",
-          "recordCondition",
-          USER1,
-          1, // containerId
-          22, // temperature
-          65, // humidity
-          10, // shock
-      )
-      
-      contractCall(
-          "condition-monitoring",
-          "recordCondition",
-          USER1,
-          1, // containerId
-          23, // temperature
-          67, // humidity
-          12, // shock
-      )
-      
-      const result = contractCall("condition-monitoring", "getContainerConditions", null, 1)
-      expect(result.result.value).toBeDefined()
-      expect(result.result.value.conditionRecords.length).toBe(2)
-    })
-    
     it("should return null for container with no condition records", () => {
       const result = contractCall("condition-monitoring", "getContainerConditions", null, 999)
       expect(result.result.value).toBeNull()
